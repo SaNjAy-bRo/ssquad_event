@@ -1,0 +1,985 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSquad Global | Enterprise Cybersecurity</title>
+    <meta
+      name="description"
+      content="SSquad Global delivers enterprise-grade cybersecurity, cloud, infrastructure, and managed security services for modern threat landscapes."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ssg: {
+                red: '#EC2024',
+                dark: '#0B0F19',
+                dark2: '#111827',
+                light: '#F8FAFC',
+                grayText: '#6B7280',
+                grayLight: '#B8C0CC',
+                cyber: '#5B2EFF',
+              },
+            },
+            maxWidth: {
+              container: '1280px',
+            },
+            fontFamily: {
+              heading: ['Plus Jakarta Sans', 'sans-serif'],
+              body: ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              premium: '0 10px 35px rgba(11, 15, 25, 0.08)',
+              darkGlow: '0 0 40px rgba(236, 32, 36, 0.25)',
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="bg-white text-slate-900 font-body antialiased">
+    <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+      <div id="scroll-progress" class="scroll-progress"></div>
+      <div class="max-w-container mx-auto px-6 lg:px-8">
+        <div class="header-shell mt-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
+          <div class="flex items-center justify-between px-5 py-4 lg:px-7">
+            <a href="#" class="flex items-center gap-3 shrink-0" aria-label="SSquad Global Home">
+              <img src="images/logon.png" alt="SSquad Global logo" class="h-9 w-auto" />
+            </a>
+
+            <nav id="desktop-nav" class="hidden lg:flex items-center gap-8 text-sm text-slate-100/90 font-medium">
+              <a class="nav-link" href="#">Company</a>
+              <button class="nav-link nav-service-trigger" type="button" data-service-trigger="cyber" aria-expanded="false">
+                Cyber Security
+              </button>
+              <button class="nav-link nav-service-trigger" type="button" data-service-trigger="infra" aria-expanded="false">
+                Infrastructure
+              </button>
+              <button class="nav-link nav-service-trigger" type="button" data-service-trigger="cloud" aria-expanded="false">
+                Cloud
+              </button>
+              <button class="nav-link nav-service-trigger" type="button" data-service-trigger="app" aria-expanded="false">
+                Application
+              </button>
+              <a class="nav-link" href="https://www.harpydefence.com/" target="_blank" rel="noopener noreferrer">Harpy Defence</a>
+              <a class="nav-link" href="#contact">Contact</a>
+            </nav>
+
+            <div class="hidden lg:block">
+              <a href="#contact" class="btn-outline-violet">Talk to an Expert <i class="ph ph-arrow-up-right"></i></a>
+            </div>
+
+            <a href="#contact" class="btn-outline-violet btn-mobile-cta lg:hidden">Talk to an Expert <i class="ph ph-arrow-up-right"></i></a>
+
+            <button id="mobile-menu-btn" class="lg:hidden text-white" aria-label="Open menu">
+              <i class="ph ph-list text-3xl"></i>
+            </button>
+          </div>
+
+          <div
+            id="mega-menu"
+            class="mega-menu hidden lg:block"
+            role="region"
+            aria-label="Services navigation"
+            aria-hidden="true"
+          >
+            <div class="mega-menu-inner">
+              <div class="mega-content-wrap">
+                <div id="mega-title" class="mega-title"></div>
+                <div class="mega-content-grid" id="mega-content"></div>
+              </div>
+            </div>
+          </div>
+
+          <div id="mobile-menu" class="lg:hidden hidden border-t border-white/10 px-5 pb-5">
+            <nav class="pt-4 flex flex-col gap-3 text-sm text-slate-100/90">
+              <a href="#" class="mobile-link">Company</a>
+              <a href="#solutions" class="mobile-link">Cyber Security</a>
+              <a href="#" class="mobile-link">Infrastructure</a>
+              <a href="#" class="mobile-link">Cloud</a>
+              <a href="#" class="mobile-link">Application</a>
+              <a href="https://www.harpydefence.com/" target="_blank" rel="noopener noreferrer" class="mobile-link">Harpy Defence</a>
+              <a href="#contact" class="mobile-link">Contact</a>
+              <a href="#contact" class="btn-outline-violet mt-2 inline-flex justify-center">Talk to an Expert <i class="ph ph-arrow-up-right"></i></a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero relative overflow-hidden bg-ssg-dark pt-36 pb-24 lg:pt-44 lg:pb-28">
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-network-lines"></div>
+        <div class="hero-signal-waves"></div>
+        <div class="hero-3d-waves"></div>
+        <div class="hero-scan-sweep"></div>
+
+        <div class="max-w-container mx-auto px-6 lg:px-8 relative z-10">
+          <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 text-white reveal">
+              <p class="text-sm tracking-[0.16em] uppercase text-ssg-grayLight">Securing Your Future, Built on Trust.</p>
+              <h1 class="font-heading text-4xl md:text-5xl xl:text-6xl leading-tight mt-5">
+                Intelligence Led Proactive CyberDefence
+              </h1>
+              <p class="mt-6 text-slate-300 text-lg leading-relaxed max-w-2xl">
+                Protect your digital infrastructure with intelligence-led cybersecurity solutions designed to detect,
+                prevent, and respond to modern cyber threats.
+              </p>
+              <div class="mt-10 flex flex-wrap gap-4">
+                <a href="#contact" class="btn-primary"><i class="ph ph-headset"></i>Talk to a Security Expert</a>
+                <a href="#solutions" class="btn-secondary"><i class="ph ph-compass-tool"></i>Explore Solutions</a>
+              </div>
+            </div>
+
+            <div class="lg:col-span-6 reveal">
+              <div class="dashboard-panel live-panel rounded-3xl p-6 md:p-8 border border-white/10 bg-white/5 backdrop-blur-xl shadow-darkGlow">
+                <div class="flex items-center justify-between mb-6">
+                  <h2 class="text-white font-semibold tracking-wide">Threat Intelligence Overview</h2>
+                  <span class="chip"><span class="live-dot"></span>Live SOC</span>
+                </div>
+
+                <div class="space-y-4">
+                  <div class="metric-row">
+                    <span class="label">Critical Threats Blocked</span>
+                    <span class="value" id="metric-threats">1,248</span>
+                  </div>
+                  <div class="metric-row">
+                    <span class="label">Global Endpoints Monitored</span>
+                    <span class="value" id="metric-endpoints">86,420</span>
+                  </div>
+                  <div class="metric-row">
+                    <span class="label">Avg Incident Response Time</span>
+                    <span class="value" id="metric-response">8m 42s</span>
+                  </div>
+                </div>
+
+                <div class="live-tracker mt-6">
+                  <div class="tracker-head">
+                    <p>Live Threat Tracking</p>
+                    <div class="signal-bars" aria-hidden="true">
+                      <span></span><span></span><span></span><span></span>
+                    </div>
+                  </div>
+                  <ul id="live-feed" class="tracker-feed">
+                    <li><span class="feed-dot"></span>Phishing campaign blocked - APAC edge <time>Now</time></li>
+                    <li><span class="feed-dot"></span>Anomalous login contained - Finance IAM <time>10s ago</time></li>
+                    <li><span class="feed-dot"></span>Ransomware indicator quarantined - DC cluster <time>26s ago</time></li>
+                  </ul>
+                </div>
+
+                <div class="mt-6 grid grid-cols-2 gap-4">
+                  <div class="mini-card">
+                    <i class="ph ph-shield-check"></i>
+                    <p>Zero-Trust Enforcement</p>
+                  </div>
+                  <div class="mini-card">
+                    <i class="ph ph-chart-line-up"></i>
+                    <p>Behavioral Analytics</p>
+                  </div>
+                  <div class="mini-card">
+                    <i class="ph ph-fingerprint"></i>
+                    <p>Identity Verification</p>
+                  </div>
+                  <div class="mini-card">
+                    <i class="ph ph-globe-hemisphere-west"></i>
+                    <p>Global SOC Coverage</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dark-phase arc-section py-20 lg:py-24">
+        <div class="max-w-container mx-auto px-6 lg:px-8">
+          <div class="arc-heading text-center max-w-3xl mx-auto reveal">
+            <span class="arc-icon"><i class="ph ph-seal-check"></i></span>
+            <p class="text-sm uppercase tracking-[0.14em] text-slate-400">Trusted by security-conscious enterprises</p>
+            <h2 class="font-heading text-3xl lg:text-4xl mt-3 text-white">Built for Confidence. Proven in High-Risk Environments.</h2>
+          </div>
+
+          <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <article class="trust-card reveal">
+              <h3>12+ Years of Expertise</h3>
+              <p>A decade of mission-critical cyber defense across complex enterprise infrastructure.</p>
+            </article>
+            <article class="trust-card reveal">
+              <h3>Global Presence</h3>
+              <p>Security programs delivered across regions with consistent operational governance.</p>
+            </article>
+            <article class="trust-card reveal">
+              <h3>Managed Security Services</h3>
+              <p>Continuous monitoring and managed operations aligned to enterprise priorities.</p>
+            </article>
+            <article class="trust-card reveal">
+              <h3>Intelligence-Led Defence</h3>
+              <p>Threat intelligence fused with response execution to reduce exposure fast.</p>
+            </article>
+          </div>
+
+          <div class="mt-10 rounded-2xl border border-white/10 bg-white/5 p-6 text-center text-slate-300 reveal">
+            Logo strip placeholder for customer and partner trust marks.
+          </div>
+        </div>
+      </section>
+
+      <section id="solutions" class="dark-phase dark-phase-alt arc-section arc-section-alt pt-6 pb-20 lg:pt-8 lg:pb-24">
+        <div class="max-w-container mx-auto px-6 lg:px-8">
+          <div class="arc-heading text-center max-w-3xl mx-auto reveal">
+            <span class="arc-icon violet"><i class="ph ph-circles-three-plus"></i></span>
+            <p class="section-eyebrow dark-eyebrow">Core Capabilities</p>
+            <h2 class="section-title text-white">Cybersecurity Solutions Built for Modern Threats</h2>
+            <p class="section-copy text-slate-300">
+              End-to-end services tailored to secure applications, identities, networks, and operations across a rapidly evolving threat landscape.
+            </p>
+          </div>
+
+          <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article class="solution-card reveal">
+              <i class="ph ph-code"></i>
+              <h3>Application Security</h3>
+              <p>Secure software lifecycles, code assurance, and hardening for cloud-native applications.</p>
+              <a href="#">Learn more <span>&rarr;</span></a>
+            </article>
+            <article class="solution-card reveal">
+              <i class="ph ph-binoculars"></i>
+              <h3>Threat Intelligence and Analytics</h3>
+              <p>Actionable intelligence and continuous analytics to identify and prioritize real risk.</p>
+              <a href="#">Learn more <span>&rarr;</span></a>
+            </article>
+            <article class="solution-card reveal">
+              <i class="ph ph-lock-key"></i>
+              <h3>Identity and Access Management</h3>
+              <p>Modern identity controls, access governance, and policy enforcement across environments.</p>
+              <a href="#">Learn more <span>&rarr;</span></a>
+            </article>
+            <article class="solution-card reveal">
+              <i class="ph ph-siren"></i>
+              <h3>Incident Response Services</h3>
+              <p>Rapid incident containment, forensic response, and resilient recovery planning.</p>
+              <a href="#">Learn more <span>&rarr;</span></a>
+            </article>
+            <article class="solution-card reveal">
+              <i class="ph ph-network"></i>
+              <h3>Network Security Services</h3>
+              <p>Zero-trust architecture, segmentation, and perimeter modernization for enterprise networks.</p>
+              <a href="#">Learn more <span>&rarr;</span></a>
+            </article>
+            <article class="solution-card reveal">
+              <i class="ph ph-bug-beetle"></i>
+              <h3>Penetration Testing Services</h3>
+              <p>Real-world adversarial testing to expose weaknesses before attackers do.</p>
+              <a href="#">Learn more <span>&rarr;</span></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-slate-50 py-20 lg:py-24 overflow-hidden">
+        <div class="max-w-container mx-auto px-6 lg:px-8">
+          <div class="grid lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-6 reveal">
+              <p class="section-eyebrow">Strategic Defence</p>
+              <h2 class="section-title">Intelligence-Led Proactive Cyber Defence</h2>
+              <p class="section-copy">
+                SSquad Global combines predictive threat intelligence, operational discipline, and rapid execution to strengthen enterprise resilience before attacks escalate.
+              </p>
+
+              <ul class="mt-8 space-y-4">
+                <li class="feature-row"><i class="ph ph-eye"></i><span>End-to-end threat visibility across users, endpoints, and workloads</span></li>
+                <li class="feature-row"><i class="ph ph-target"></i><span>Proactive defense strategy tuned to your business risk posture</span></li>
+                <li class="feature-row"><i class="ph ph-timer"></i><span>Faster detection, triage, and incident response across teams</span></li>
+                <li class="feature-row"><i class="ph ph-shield-star"></i><span>Enterprise-wide risk reduction through continuous hardening</span></li>
+              </ul>
+            </div>
+
+            <div class="lg:col-span-6 reveal">
+              <div class="intel-visual rounded-3xl p-7 md:p-8 shadow-premium">
+                <div class="intel-chart">
+                  <svg class="intel-svg" viewBox="0 0 640 280" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="intelArea" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" stop-color="rgba(208,46,50,0.32)" />
+                        <stop offset="100%" stop-color="rgba(208,46,50,0)" />
+                      </linearGradient>
+                      <linearGradient id="intelLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" stop-color="#3F126C" />
+                        <stop offset="100%" stop-color="#EC2024" />
+                      </linearGradient>
+                    </defs>
+                    <path class="intel-area" d="M40,230 C110,210 155,95 220,132 C285,169 340,95 400,120 C470,150 510,94 590,106 L590,250 L40,250 Z"></path>
+                    <path class="intel-line" d="M40,230 C110,210 155,95 220,132 C285,169 340,95 400,120 C470,150 510,94 590,106"></path>
+                    <path class="intel-line-secondary" d="M40,218 C120,204 180,170 235,160 C300,148 365,132 420,145 C490,160 535,154 590,142"></path>
+                  </svg>
+                  <span class="intel-point p1"></span>
+                  <span class="intel-point p2"></span>
+                  <span class="intel-point p3"></span>
+                  <div class="intel-legend">
+                    <span><i class="dot red"></i>Threat Trend</span>
+                    <span><i class="dot violet"></i>Signal Correlation</span>
+                  </div>
+                </div>
+                <div class="mt-6 grid grid-cols-2 gap-4">
+                  <div class="intel-stat">
+                    <p class="kpi">99.9%</p>
+                    <p class="desc">Threat Event Uptime Monitoring</p>
+                  </div>
+                  <div class="intel-stat">
+                    <p class="kpi">24/7</p>
+                    <p class="desc">Managed Security Operations</p>
+                  </div>
+                  <div class="intel-stat">
+                    <p class="kpi">150+</p>
+                    <p class="desc">Threat Sources Correlated</p>
+                  </div>
+                  <div class="intel-stat">
+                    <p class="kpi">Real-time</p>
+                    <p class="desc">Executive Security Visibility</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white py-20 lg:py-24">
+        <div class="max-w-container mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <p class="section-eyebrow">Tailored by Sector</p>
+            <h2 class="section-title">Industry Expertise</h2>
+            <p class="section-copy">
+              We design security programs around operational realities, regulatory pressure, and business-critical systems for each industry we serve.
+            </p>
+          </div>
+
+          <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article class="industry-card reveal">
+              <h3 class="industry-head"><span class="industry-icon"><i class="ph ph-bank"></i></span>Banking</h3>
+              <p>Protect digital banking channels, transactions, and customer identity at scale.</p>
+            </article>
+            <article class="industry-card reveal">
+              <h3 class="industry-head"><span class="industry-icon violet"><i class="ph ph-factory"></i></span>Manufacturing</h3>
+              <p>Secure OT/IT convergence and production continuity across distributed environments.</p>
+            </article>
+            <article class="industry-card reveal">
+              <h3 class="industry-head"><span class="industry-icon"><i class="ph ph-drop"></i></span>Oil and Gas</h3>
+              <p>Reduce risk across critical infrastructure, remote assets, and operational networks.</p>
+            </article>
+            <article class="industry-card reveal">
+              <h3 class="industry-head"><span class="industry-icon violet"><i class="ph ph-shield-check"></i></span>Insurance</h3>
+              <p>Defend policyholder data and core systems under strict compliance expectations.</p>
+            </article>
+            <article class="industry-card reveal">
+              <h3 class="industry-head"><span class="industry-icon"><i class="ph ph-buildings"></i></span>Public Services</h3>
+              <p>Strengthen cyber resilience for essential digital services and public operations.</p>
+            </article>
+            <article class="industry-card reveal">
+              <h3 class="industry-head"><span class="industry-icon violet"><i class="ph ph-heartbeat"></i></span>Healthcare</h3>
+              <p>Protect sensitive patient data and clinical systems without disrupting care.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-ssg-dark2 py-20 lg:py-24 overflow-hidden">
+        <div class="max-w-container mx-auto px-6 lg:px-8">
+          <div class="harpy-shell reveal">
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+              <div class="lg:col-span-7">
+                <p class="text-sm uppercase tracking-[0.14em] text-slate-400">Platform Spotlight</p>
+                <h2 class="font-heading text-3xl lg:text-4xl text-white mt-3">Harpy Defence SecOps Platform</h2>
+                <p class="mt-4 text-slate-300 leading-relaxed max-w-3xl">
+                  Harpy Defence provides a fully managed SecOps platform that captures, normalizes, and correlates
+                  security telemetry across endpoints, cloud, SaaS, and network layers to accelerate detection and response.
+                </p>
+
+                <div class="mt-7 grid sm:grid-cols-2 gap-4">
+                  <div class="harpy-point">
+                    <i class="ph ph-activity"></i>
+                    <span>Integrated SIEM, XDR, NDR, Threat Intelligence, and Automation</span>
+                  </div>
+                  <div class="harpy-point">
+                    <i class="ph ph-lightning"></i>
+                    <span>Real-time alerting with SOC workflows and escalation playbooks</span>
+                  </div>
+                  <div class="harpy-point">
+                    <i class="ph ph-cloud"></i>
+                    <span>Coverage across O365, Azure, AWS, and GCP environments</span>
+                  </div>
+                  <div class="harpy-point">
+                    <i class="ph ph-chart-line"></i>
+                    <span>Executive dashboards, compliance reporting, and 24x7 visibility</span>
+                  </div>
+                </div>
+
+                <div class="mt-8">
+                  <a
+                    href="https://www.harpydefence.com/secopsplatform.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-primary"
+                    >Explore Harpy Defence</a
+                  >
+                </div>
+              </div>
+
+              <div class="lg:col-span-5">
+                <div class="harpy-visual">
+                  <span class="harpy-icon" aria-hidden="true"><i class="ph ph-shield-star"></i></span>
+                  <h3>Enterprise SecOps Readiness</h3>
+                  <p>
+                    Unified monitoring, threat context, and response orchestration to help security teams move from
+                    alert overload to measurable resilience.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-ssg-light py-20 lg:py-24">
+        <div class="max-w-container mx-auto px-6 lg:px-8">
+          <div class="flex flex-wrap items-end justify-between gap-6 reveal">
+            <div class="max-w-2xl">
+              <p class="section-eyebrow">Insights</p>
+              <h2 class="section-title">Latest Cybersecurity News</h2>
+            </div>
+            <a href="https://ssquad.com/blog/" target="_blank" rel="noopener noreferrer" class="text-ssg-red font-semibold inline-flex items-center gap-2">View all insights <span>&rarr;</span></a>
+          </div>
+
+          <div class="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <article class="insight-card reveal">
+              <img src="https://ssquad.com/wp-content/uploads/2025/05/securtity-advisory-570x600.jpg" alt="Security advisory visual from SSquad Global" />
+              <div class="content">
+                <h3>Security Advisory: Strengthen Your Cyber Defenses With Expert Guidance</h3>
+                <p>In today’s volatile cyber landscape, expert guidance helps organizations reduce risk and improve resilience.</p>
+                <a href="https://ssquad.com/security-advisory-strengthen-your-cyber-defenses-with-expert-guidance/" target="_blank" rel="noopener noreferrer">Read more <span>&rarr;</span></a>
+              </div>
+            </article>
+            <article class="insight-card reveal">
+              <img src="https://ssquad.com/wp-content/uploads/2020/11/nist-570x600.jpg" alt="NIST cybersecurity framework visual from SSquad Global" />
+              <div class="content">
+                <h3>How Can Organizations Use The NIST Cybersecurity Framework To Strengthen Their Security?</h3>
+                <p>Understand how the NIST framework provides a structured path to identify, protect, detect, respond, and recover.</p>
+                <a href="https://ssquad.com/how-can-organizations-use-the-nist-cybersecurity-framework-to-strengthen-their-security/" target="_blank" rel="noopener noreferrer">Read more <span>&rarr;</span></a>
+              </div>
+            </article>
+            <article class="insight-card reveal">
+              <img src="https://ssquad.com/wp-content/uploads/2020/11/ransom_banner-570x600.jpg" alt="Ransomware awareness visual from SSquad Global" />
+              <div class="content">
+                <h3>Ransomware For Small Business: Everything You Need To Know About</h3>
+                <p>Learn key ransomware risks and practical controls small and mid-sized businesses should implement first.</p>
+                <a href="https://ssquad.com/ransomware-for-small-business-everything-you-need-to-know-about/" target="_blank" rel="noopener noreferrer">Read more <span>&rarr;</span></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white py-20 lg:py-24">
+        <div class="max-w-container mx-auto px-6 lg:px-8">
+          <div class="max-w-3xl reveal">
+            <p class="section-eyebrow">Assurance</p>
+            <h2 class="section-title">Certifications and Compliance</h2>
+            <p class="section-copy">
+              Our security programs align with globally recognized standards and frameworks to help enterprises operate with confidence, compliance, and audit readiness.
+            </p>
+          </div>
+
+          <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+            <div class="cert-carousel reveal sm:col-span-2 lg:col-span-5">
+              <div class="cert-track">
+                <article class="cert-slide">
+                  <img src="https://logo.clearbit.com/isc2.org" alt="ISC2 certification logo" />
+                  <p>CISSP</p>
+                </article>
+                <article class="cert-slide">
+                  <img src="https://logo.clearbit.com/isaca.org" alt="ISACA certification logo" />
+                  <p>CISM</p>
+                </article>
+                <article class="cert-slide">
+                  <img src="https://logo.clearbit.com/aicpa.org" alt="AICPA logo for SOC 2 framework" />
+                  <p>SOC 2</p>
+                </article>
+                <article class="cert-slide">
+                  <img src="https://logo.clearbit.com/iso.org" alt="ISO certification logo" />
+                  <p>ISO 27001</p>
+                </article>
+                <article class="cert-slide">
+                  <img src="https://logo.clearbit.com/nist.gov" alt="NIST framework logo" />
+                  <p>NIST CSF</p>
+                </article>
+
+                <article class="cert-slide" aria-hidden="true">
+                  <img src="https://logo.clearbit.com/isc2.org" alt="" />
+                  <p>CISSP</p>
+                </article>
+                <article class="cert-slide" aria-hidden="true">
+                  <img src="https://logo.clearbit.com/isaca.org" alt="" />
+                  <p>CISM</p>
+                </article>
+                <article class="cert-slide" aria-hidden="true">
+                  <img src="https://logo.clearbit.com/aicpa.org" alt="" />
+                  <p>SOC 2</p>
+                </article>
+                <article class="cert-slide" aria-hidden="true">
+                  <img src="https://logo.clearbit.com/iso.org" alt="" />
+                  <p>ISO 27001</p>
+                </article>
+                <article class="cert-slide" aria-hidden="true">
+                  <img src="https://logo.clearbit.com/nist.gov" alt="" />
+                  <p>NIST CSF</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="bg-ssg-dark2 py-20 lg:py-24">
+        <div class="max-w-container mx-auto px-6 lg:px-8 reveal">
+          <div class="cta-shell rounded-3xl p-8 md:p-12 border border-white/10">
+            <div class="cta-grid">
+              <div>
+                <p class="text-sm uppercase tracking-[0.14em] text-ssg-grayLight">Take Action</p>
+                <h2 class="font-heading text-white text-3xl lg:text-5xl mt-4 max-w-3xl">Secure Your Business Before the Next Attack</h2>
+                <p class="mt-6 text-slate-300 max-w-2xl text-lg">
+                  Get a focused security assessment from our experts and build a stronger, intelligence-led defense posture.
+                </p>
+                <div class="mt-10 flex flex-wrap gap-4">
+                  <a href="#" class="btn-primary"><i class="ph ph-calendar-check"></i>Book Security Assessment</a>
+                  <a href="#" class="btn-secondary"><i class="ph ph-headset"></i>Speak with an Expert</a>
+                </div>
+              </div>
+
+              <div class="cta-visual-wrap" aria-hidden="true">
+                <div class="cta-3d-card">
+                  <div class="cta-orb orb-a"></div>
+                  <div class="cta-orb orb-b"></div>
+                  <div class="cta-cube">
+                    <span class="face face-front"><i class="ph ph-shield-check"></i></span>
+                    <span class="face face-right"></span>
+                    <span class="face face-top"></span>
+                  </div>
+                  <div class="cta-ring"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-ssg-dark py-16">
+      <div class="max-w-container mx-auto px-6 lg:px-8">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-12 gap-10 text-slate-300 items-start">
+          <div class="lg:col-span-5 footer-col">
+            <img src="images/logon.png" alt="SSquad Global logo" class="h-10 w-auto" />
+            <p class="mt-5 max-w-md text-sm text-slate-400">
+              SSquad Global delivers enterprise-grade cybersecurity, infrastructure, cloud, and managed security services for organizations operating in high-stakes environments.
+            </p>
+            <div class="mt-6 flex items-center gap-3 text-xl text-slate-300">
+              <a href="#" aria-label="LinkedIn" class="social"><i class="ph ph-linkedin-logo"></i></a>
+              <a href="#" aria-label="X" class="social"><i class="ph ph-x-logo"></i></a>
+              <a href="#" aria-label="Facebook" class="social"><i class="ph ph-facebook-logo"></i></a>
+            </div>
+          </div>
+
+          <div class="lg:col-span-3 footer-col">
+            <h3>Contact Info</h3>
+            <ul>
+              <li><strong>Phone:</strong><br />+603 2276 5856</li>
+              <li><strong>Email:</strong><br />sales@ssquad.com</li>
+              <li><strong>Address:</strong><br />1 Ubi View, #04-05 Focus One, Singapore 408555.</li>
+            </ul>
+          </div>
+          <div class="lg:col-span-2 footer-col">
+            <h3>Services</h3>
+            <ul>
+              <li>Cyber Security</li>
+              <li>Infrastructure</li>
+              <li>Cloud</li>
+              <li>Application</li>
+              <li>Harpy Defence</li>
+            </ul>
+          </div>
+          <div class="lg:col-span-2 footer-col">
+            <h3>Company</h3>
+            <ul>
+              <li>About Us</li>
+              <li>Industries</li>
+              <li>Insights</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-12 pt-6 border-t border-white/10 text-sm text-slate-500">
+          © <span id="year"></span> SSquad Global. All rights reserved.
+        </div>
+      </div>
+    </footer>
+
+    <a href="#" class="floating-chat" aria-label="Open chat">
+      <i class="ph ph-chat-circle-text chat-main-icon"></i>
+      <span class="chat-plus-badge" aria-hidden="true">+</span>
+    </a>
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script>
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const siteHeader = document.getElementById('site-header');
+      const headerShell = document.querySelector('.header-shell');
+      const yearEl = document.getElementById('year');
+      const reveals = document.querySelectorAll('.reveal');
+      const megaMenu = document.getElementById('mega-menu');
+      const desktopNav = document.getElementById('desktop-nav');
+      const megaContent = document.getElementById('mega-content');
+      const megaTitle = document.getElementById('mega-title');
+      const serviceTriggers = document.querySelectorAll('.nav-service-trigger');
+      const scrollProgress = document.getElementById('scroll-progress');
+      const metricThreats = document.getElementById('metric-threats');
+      const metricEndpoints = document.getElementById('metric-endpoints');
+      const metricResponse = document.getElementById('metric-response');
+      const liveFeed = document.getElementById('live-feed');
+
+      const serviceData = {
+        cyber: [
+          {
+            title: 'Application Security',
+            desc: 'Comprehensive protection for modern software and digital applications.',
+            href: '#',
+          },
+          {
+            title: 'AI-Powered Cybersecurity Solutions',
+            desc: 'AI-assisted detection and response against fast-moving cyber threats.',
+            href: '#',
+          },
+          {
+            title: 'Threat Intelligence and Analytics',
+            desc: 'Intelligence-led monitoring with risk-prioritized defensive actions.',
+            href: '#',
+          },
+          {
+            title: 'Penetration Testing Services',
+            desc: 'Adversarial validation to uncover exploitable weaknesses early.',
+            href: '#',
+          },
+          {
+            title: 'Identity and Access Management (IAM)',
+            desc: 'Identity-first access controls and governance for enterprise systems.',
+            href: '#',
+          },
+          {
+            title: 'OT Security Services',
+            desc: 'Tailored security controls for industrial and operational technology.',
+            href: '#',
+          },
+        ],
+        infra: [
+          {
+            title: 'End-to-End IT Infrastructure Management',
+            desc: 'Modernize and operate resilient enterprise infrastructure at scale.',
+            href: '#',
+          },
+          {
+            title: 'Third-Party Maintenance (TPM) Services',
+            desc: 'Extend asset life and optimize IT cost with expert support.',
+            href: '#',
+          },
+          {
+            title: 'Auxiliary Services',
+            desc: 'Specialized technology services aligned with business priorities.',
+            href: '#',
+          },
+          {
+            title: 'End-User Computing',
+            desc: 'Secure and flexible end-user environments for enterprise teams.',
+            href: '#',
+          },
+          {
+            title: 'IoT Services',
+            desc: 'Connect data and devices to improve operations and reduce risk.',
+            href: '#',
+          },
+          {
+            title: 'Network as a Platform',
+            desc: 'Stabilize and modernize data center and enterprise networks.',
+            href: '#',
+          },
+        ],
+        cloud: [
+          {
+            title: 'Cloud Data Migration and Modernization',
+            desc: 'Seamless cloud migration with modernized architecture and controls.',
+            href: '#',
+          },
+          {
+            title: 'Cloud Consulting Services',
+            desc: 'Strategic guidance for scalable, high-confidence cloud decisions.',
+            href: '#',
+          },
+          {
+            title: 'Cloud Native Solutions',
+            desc: 'Cloud-native engineering for agility, scalability, and innovation.',
+            href: '#',
+          },
+          {
+            title: 'Cloud Assurance Services',
+            desc: 'Secure, compliant, and resilient cloud operating environments.',
+            href: '#',
+          },
+          {
+            title: 'Cloud Security',
+            desc: 'Layered cloud protection with proactive threat defense.',
+            href: '#',
+          },
+          {
+            title: 'Cloud Operations and Intelligent Automation',
+            desc: 'Automated cloud operations to improve reliability and speed.',
+            href: '#',
+          },
+        ],
+        app: [
+          {
+            title: 'Custom Application Development',
+            desc: 'Tailor-built applications aligned to unique business workflows.',
+            href: '#',
+          },
+          {
+            title: 'Legacy Application Modernization',
+            desc: 'Re-engineer legacy systems for modern platforms and outcomes.',
+            href: '#',
+          },
+          {
+            title: 'Application Integration Services',
+            desc: 'Connect systems and data sources for unified digital operations.',
+            href: '#',
+          },
+          {
+            title: 'API Development and Integration',
+            desc: 'Build secure APIs that extend platform capabilities.',
+            href: '#',
+          },
+          {
+            title: 'Workflow Automation and Optimization',
+            desc: 'Automate repetitive work to improve speed and efficiency.',
+            href: '#',
+          },
+          {
+            title: 'Security and Compliance Customization',
+            desc: 'Align applications with security and regulatory controls.',
+            href: '#',
+          },
+        ],
+      };
+      const serviceLabels = {
+        cyber: 'Cyber Security Services',
+        infra: 'Infrastructure Services',
+        cloud: 'Cloud Services',
+        app: 'Application Services',
+      };
+
+      let activeService = 'cyber';
+      let closeTimer = null;
+      let threatCount = 1248;
+      let endpointCount = 86420;
+      let responseSeconds = 522;
+
+      const liveEvents = [
+        'Suspicious lateral movement isolated - IAM segment',
+        'Malicious domain request blocked - Web gateway',
+        'Privilege escalation attempt denied - Core server',
+        'High-risk endpoint behavior contained - EMEA branch',
+        'Data exfiltration pattern interrupted - Cloud workload',
+        'Unusual VPN sequence flagged - Identity perimeter',
+      ];
+
+      yearEl.textContent = new Date().getFullYear();
+
+      mobileBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      const renderMegaContent = (serviceKey) => {
+        const items = serviceData[serviceKey] || [];
+        const middle = Math.ceil(items.length / 2);
+        const leftCol = items.slice(0, middle);
+        const rightCol = items.slice(middle);
+        if (megaTitle) megaTitle.textContent = serviceLabels[serviceKey] || 'Services';
+        megaContent.classList.add('is-switching');
+        setTimeout(() => {
+          megaContent.innerHTML = `
+            <div class="mega-col">
+              ${leftCol
+                .map(
+                  (item) => `
+                    <article class="mega-item">
+                      <a class="mega-link" href="${item.href || '#'}">
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                        <span class="mega-link-cta">View service <i class="ph ph-arrow-up-right"></i></span>
+                      </a>
+                    </article>
+                  `
+                )
+                .join('')}
+            </div>
+            <div class="mega-col">
+              ${rightCol
+                .map(
+                  (item) => `
+                    <article class="mega-item">
+                      <a class="mega-link" href="${item.href || '#'}">
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                        <span class="mega-link-cta">View service <i class="ph ph-arrow-up-right"></i></span>
+                      </a>
+                    </article>
+                  `
+                )
+                .join('')}
+            </div>
+          `;
+          megaContent.classList.remove('is-switching');
+        }, 110);
+      };
+
+      const setActiveService = (serviceKey) => {
+        activeService = serviceKey;
+        serviceTriggers.forEach((trigger) => {
+          trigger.classList.toggle('nav-service-active', trigger.dataset.serviceTrigger === serviceKey);
+          trigger.setAttribute('aria-expanded', String(trigger.dataset.serviceTrigger === serviceKey));
+        });
+        renderMegaContent(serviceKey);
+      };
+
+      const openMega = (serviceKey = activeService) => {
+        if (closeTimer) clearTimeout(closeTimer);
+        setActiveService(serviceKey);
+        megaMenu.classList.add('open');
+        megaMenu.setAttribute('aria-hidden', 'false');
+      };
+
+      const closeMega = () => {
+        megaMenu.classList.remove('open');
+        megaMenu.setAttribute('aria-hidden', 'true');
+        serviceTriggers.forEach((trigger) => trigger.setAttribute('aria-expanded', 'false'));
+      };
+
+      serviceTriggers.forEach((trigger) => {
+        const key = trigger.dataset.serviceTrigger;
+        trigger.addEventListener('mouseenter', () => openMega(key));
+        trigger.addEventListener('focus', () => openMega(key));
+        trigger.addEventListener('click', () => openMega(key));
+      });
+
+      if (headerShell) {
+        headerShell.addEventListener('mouseenter', () => {
+          if (closeTimer) clearTimeout(closeTimer);
+        });
+        headerShell.addEventListener('mouseleave', () => {
+          closeTimer = setTimeout(closeMega, 180);
+        });
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMega();
+      });
+
+      document.addEventListener('click', (event) => {
+        if (!megaMenu.contains(event.target) && !desktopNav.contains(event.target)) closeMega();
+      });
+
+      renderMegaContent(activeService);
+
+      const onScroll = () => {
+        siteHeader.classList.toggle('header-scrolled', window.scrollY > 12);
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (window.scrollY / docHeight) * 100 : 0;
+        if (scrollProgress) scrollProgress.style.width = `${Math.min(progress, 100)}%`;
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll);
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      reveals.forEach((el, index) => {
+        el.style.transitionDelay = `${Math.min(index * 35, 220)}ms`;
+        observer.observe(el);
+      });
+
+      const formatResponse = (seconds) => {
+        const mins = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${mins}m ${String(secs).padStart(2, '0')}s`;
+      };
+
+      const pushLiveFeed = (message) => {
+        if (!liveFeed) return;
+        const li = document.createElement('li');
+        li.innerHTML = `<span class=\"feed-dot\"></span>${message}<time>Now</time>`;
+        li.classList.add('new-event');
+        liveFeed.prepend(li);
+        while (liveFeed.children.length > 4) liveFeed.removeChild(liveFeed.lastElementChild);
+        const labels = ['Now', '12s ago', '28s ago', '47s ago'];
+        [...liveFeed.children].forEach((node, index) => {
+          const timeEl = node.querySelector('time');
+          if (timeEl) timeEl.textContent = labels[index] || '1m ago';
+        });
+        setTimeout(() => li.classList.remove('new-event'), 420);
+      };
+
+      setInterval(() => {
+        threatCount += Math.floor(Math.random() * 5) + 1;
+        endpointCount += Math.floor(Math.random() * 32) + 8;
+        responseSeconds = Math.max(365, responseSeconds - Math.floor(Math.random() * 3));
+
+        if (metricThreats) {
+          metricThreats.textContent = threatCount.toLocaleString();
+          metricThreats.classList.add('metric-flash');
+          setTimeout(() => metricThreats.classList.remove('metric-flash'), 260);
+        }
+        if (metricEndpoints) {
+          metricEndpoints.textContent = endpointCount.toLocaleString();
+          metricEndpoints.classList.add('metric-flash');
+          setTimeout(() => metricEndpoints.classList.remove('metric-flash'), 260);
+        }
+        if (metricResponse) {
+          metricResponse.textContent = formatResponse(responseSeconds);
+          metricResponse.classList.add('metric-flash');
+          setTimeout(() => metricResponse.classList.remove('metric-flash'), 260);
+        }
+
+        const event = liveEvents[Math.floor(Math.random() * liveEvents.length)];
+        pushLiveFeed(event);
+      }, 2300);
+    </script>
+  </body>
+</html>

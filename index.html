@@ -1,0 +1,585 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CISO Roundtable 2026 | Decisions Under Uncertainty</title>
+    <meta name="description" content="Join the CISO Roundtable 2026 hosted by SSquad Global. Scaling Security in a World of Signal and Noise." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ssg: {
+                red: '#EC2024',
+                dark: '#0B0F19',
+                dark2: '#111827',
+                light: '#F8FAFC',
+                grayText: '#6B7280',
+                grayLight: '#B8C0CC',
+                cyber: '#5B2EFF',
+              },
+            },
+            fontFamily: {
+              heading: ['Plus Jakarta Sans', 'sans-serif'],
+              body: ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              premium: '0 10px 35px rgba(11, 15, 25, 0.08)',
+              darkGlow: '0 0 40px rgba(236, 32, 36, 0.25)',
+            },
+          },
+        },
+      };
+    </script>
+    
+    <!-- Custom CSS applied properly for Tailwind CDN -->
+    <style type="text/tailwindcss">
+      @layer base {
+        html {
+          scroll-behavior: smooth;
+        }
+        body {
+          @apply text-slate-800 bg-ssg-light font-body antialiased;
+        }
+        h1, h2, h3, h4, h5, h6 {
+          @apply font-heading tracking-tight;
+        }
+      }
+
+      @layer components {
+        .btn-primary {
+          @apply inline-flex items-center justify-center gap-2 rounded-full bg-ssg-red px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-red-700 hover:shadow-darkGlow focus:outline-none focus:ring-2 focus:ring-ssg-red focus:ring-offset-2;
+        }
+        .btn-secondary {
+          @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2;
+        }
+        .form-group {
+          @apply mb-5;
+        }
+        .form-label {
+          @apply block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2;
+        }
+        .form-input {
+          @apply w-full rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 transition-all focus:border-ssg-cyber focus:bg-white focus:outline-none focus:ring-2 focus:ring-ssg-cyber/20 placeholder-slate-400;
+        }
+        .form-radio-custom {
+          @apply h-5 w-5 text-ssg-cyber border-slate-300 focus:ring-ssg-cyber transition-all;
+        }
+        .event-card {
+          @apply rounded-3xl border border-slate-200 bg-white p-6 shadow-premium transition-all sm:p-10;
+        }
+        .agenda-item {
+          @apply relative border-l-2 border-ssg-red pl-6 pb-8 last:pb-0;
+        }
+        .agenda-item::before {
+          content: '';
+          @apply absolute left-[-9px] top-0 h-4 w-4 rounded-full border-4 border-white bg-ssg-red shadow-sm;
+        }
+        .agenda-time {
+          @apply text-sm font-bold text-ssg-cyber mb-1 block tracking-wide;
+        }
+        .agenda-title {
+          @apply text-lg font-bold text-slate-900;
+        }
+        .agenda-desc {
+          @apply text-slate-600 mt-2 text-sm leading-relaxed;
+        }
+      }
+
+      /* Hero Animations & Background */
+      .hero {
+        position: relative;
+        isolation: isolate;
+        background-color: #0B0F19;
+      }
+      .hero::before,
+      .hero::after {
+        content: '';
+        position: absolute;
+        border-radius: 999px;
+        filter: blur(70px);
+        pointer-events: none;
+        z-index: 0;
+      }
+      .hero::before {
+        width: 28rem;
+        height: 28rem;
+        top: -9rem;
+        left: -8rem;
+        background: radial-gradient(circle, rgba(208, 46, 50, 0.42) 0%, rgba(208, 46, 50, 0) 70%);
+        animation: heroBlobA 12s ease-in-out infinite alternate;
+      }
+      .hero::after {
+        width: 30rem;
+        height: 30rem;
+        right: -8rem;
+        bottom: -9rem;
+        background: radial-gradient(circle, rgba(63, 18, 108, 0.45) 0%, rgba(63, 18, 108, 0) 70%);
+        animation: heroBlobB 14s ease-in-out infinite alternate;
+      }
+      .hero-grid-overlay {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: radial-gradient(circle at center, black 30%, transparent 88%);
+        opacity: 0.32;
+        pointer-events: none;
+      }
+      .hero-network-lines,
+      .hero-signal-waves,
+      .hero-3d-waves,
+      .hero-scan-sweep {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+      }
+      .hero-network-lines {
+        opacity: 0.62;
+        background-image: linear-gradient(110deg, rgba(208, 46, 50, 0.34) 1.4px, transparent 1.4px),
+          linear-gradient(28deg, rgba(63, 18, 108, 0.34) 1.4px, transparent 1.4px);
+        background-size: 150px 150px, 190px 190px;
+        background-position: 0 0, 20px 40px;
+        mask-image: radial-gradient(circle at 55% 45%, black 20%, transparent 78%);
+        animation: networkDrift 18s linear infinite;
+      }
+      .hero-network-lines::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(circle, rgba(255, 255, 255, 0.42) 1px, transparent 1.5px);
+        background-size: 34px 34px;
+        opacity: 0.42;
+        animation: nodeDrift 16s linear infinite;
+      }
+      .hero-signal-waves::before,
+      .hero-signal-waves::after {
+        content: '';
+        position: absolute;
+        border-radius: 999px;
+        border: 1.5px solid rgba(208, 46, 50, 0.38);
+        box-shadow: inset 0 0 46px rgba(63, 18, 108, 0.2);
+        opacity: 0;
+        transform: scale(0.55);
+      }
+      .hero-signal-waves::before {
+        width: 360px;
+        height: 360px;
+        right: 14%;
+        top: 20%;
+        animation: wavePulse 4.2s ease-out infinite;
+      }
+      .hero-signal-waves::after {
+        width: 470px;
+        height: 470px;
+        left: 8%;
+        bottom: 8%;
+        border-color: rgba(63, 18, 108, 0.45);
+        animation: wavePulse 5s ease-out infinite 0.9s;
+      }
+      .hero-3d-waves {
+        inset: auto -15% -130px -15%;
+        height: 360px;
+        opacity: 0.72;
+        transform: perspective(800px) rotateX(66deg);
+        transform-origin: center bottom;
+        background-image: repeating-linear-gradient(90deg, rgba(208, 46, 50, 0.34) 0, rgba(208, 46, 50, 0.34) 2px, transparent 1px, transparent 40px),
+          repeating-linear-gradient(180deg, rgba(63, 18, 108, 0.32) 0, rgba(63, 18, 108, 0.32) 2px, transparent 1px, transparent 28px);
+        animation: waveGridShift 9s linear infinite;
+        mask-image: linear-gradient(180deg, transparent 0, black 22%, black 76%, transparent 100%);
+      }
+      .hero-3d-waves::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 50% 20%, rgba(208, 46, 50, 0.4), transparent 60%);
+        animation: waveGlow 3.8s ease-in-out infinite;
+      }
+      .hero-scan-sweep {
+        background: linear-gradient(100deg, transparent 16%, rgba(255, 255, 255, 0.08) 34%, rgba(208, 46, 50, 0.16) 47%, rgba(63, 18, 108, 0.12) 55%, transparent 72%);
+        transform: translateX(-120%);
+        animation: scanSweep 4.8s ease-in-out infinite;
+        opacity: 0.78;
+      }
+      .hero-glow {
+        position: absolute;
+        top: -8rem;
+        right: -5rem;
+        width: 26rem;
+        height: 26rem;
+        background: radial-gradient(circle, rgba(208, 46, 50, 0.24), rgba(63, 18, 108, 0.06) 45%, transparent 72%);
+        filter: blur(10px);
+        z-index: 0;
+      }
+      
+      /* Header Shell */
+      .header-shell {
+        transition: background 250ms ease, border-color 250ms ease, box-shadow 250ms ease;
+      }
+
+      @keyframes heroBlobA {
+        0% { transform: translate3d(0, 0, 0) scale(1); }
+        100% { transform: translate3d(70px, 34px, 0) scale(1.08); }
+      }
+      @keyframes heroBlobB {
+        0% { transform: translate3d(0, 0, 0) scale(1); }
+        100% { transform: translate3d(-80px, -40px, 0) scale(1.1); }
+      }
+      @keyframes networkDrift {
+        0% { background-position: 0 0, 20px 40px; }
+        100% { background-position: 180px 120px, -220px 170px; }
+      }
+      @keyframes nodeDrift {
+        0% { transform: translate3d(0, 0, 0); }
+        100% { transform: translate3d(34px, 24px, 0); }
+      }
+      @keyframes wavePulse {
+        0% { opacity: 0; transform: scale(0.55); }
+        22% { opacity: 0.36; }
+        100% { opacity: 0; transform: scale(1.2); }
+      }
+      @keyframes waveGridShift {
+        0% { background-position: 0 0, 0 0; }
+        100% { background-position: 52px 0, 0 34px; }
+      }
+      @keyframes waveGlow {
+        0%, 100% { opacity: 0.38; }
+        50% { opacity: 0.78; }
+      }
+      @keyframes scanSweep {
+        0% { transform: translateX(-120%); }
+        100% { transform: translateX(120%); }
+      }
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+      .delay-100 { animation-delay: 100ms; }
+      .delay-200 { animation-delay: 200ms; }
+    </style>
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  </head>
+  <body class="bg-ssg-light text-slate-800 font-body antialiased selection:bg-ssg-cyber selection:text-white">
+    
+    <!-- Navbar -->
+    <header class="absolute top-0 inset-x-0 z-50">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="header-shell mt-4 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md">
+          <div class="flex items-center justify-between px-5 py-4">
+            <div class="flex items-center gap-4">
+              <a href="#" aria-label="SSquad Global Home">
+                <img src="ref/ssquad/images/logon.png" alt="SSquad Global" class="h-8 w-auto" />
+              </a>
+            </div>
+            <div class="hidden md:flex items-center gap-6 text-white">
+              <span class="text-xs font-bold text-slate-300 uppercase tracking-widest">Technology Partner</span>
+              <img src="ref/securonix.png" alt="Securonix Logo" class="h-6 w-auto object-contain filter brightness-0 invert opacity-90" />
+            </div>
+            <div class="flex items-center gap-4">
+              <a href="#rsvp" class="inline-flex items-center justify-center rounded-lg bg-ssg-red px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-ssg-red/30 hover:bg-white hover:text-ssg-red transition-all duration-300 focus:ring-2 focus:ring-white focus:ring-offset-2">
+                RSVP Now <i class="ph ph-arrow-right ml-2 opacity-80"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section (Dark Phase - Custom Animated) -->
+      <section class="hero relative overflow-hidden bg-ssg-dark pt-32 pb-16 lg:pt-40 lg:pb-24">
+        <div class="hero-grid-overlay"></div>
+        <div class="hero-glow"></div>
+        <div class="hero-network-lines"></div>
+        <div class="hero-signal-waves"></div>
+        <div class="hero-3d-waves"></div>
+        <div class="hero-scan-sweep"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div class="max-w-4xl mx-auto text-center animate-fade-in-up">
+            <div class="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-1.5 text-sm font-medium text-white mb-6 backdrop-blur-sm shadow-[0_0_15px_rgba(255,255,255,0.05)]">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-ssg-red opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-ssg-red"></span>
+              </span>
+              By Invitation Only
+            </div>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl text-white font-bold leading-tight">
+              CISO Roundtable <span class="text-ssg-cyber drop-shadow-[0_0_15px_rgba(91,46,255,0.4)]">2026</span>
+            </h1>
+            <p class="mt-4 text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-light">
+              Join leading cybersecurity executives for a strategic dialogue on building resilience in an age of uncertainty.
+            </p>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-4 text-white font-medium">
+              <div class="flex items-center gap-3 bg-white/5 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:-translate-y-1 transition-transform cursor-default">
+                <i class="ph ph-calendar-blank text-xl text-ssg-red"></i>
+                <span class="text-sm">21 May 2026</span>
+              </div>
+              <div class="flex items-center gap-3 bg-white/5 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:-translate-y-1 transition-transform cursor-default">
+                <i class="ph ph-clock text-xl text-ssg-red"></i>
+                <span class="text-sm">9:00 AM – 2:00 PM</span>
+              </div>
+              <div class="flex items-center gap-3 bg-white/5 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:-translate-y-1 transition-transform cursor-default">
+                <i class="ph ph-map-pin text-xl text-ssg-red"></i>
+                <span class="text-sm">Le Méridien, KL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Event Overview and Details -->
+      <section class="py-16 bg-white relative z-20 border-b border-slate-100">
+        <div class="max-w-5xl mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-2xl md:text-3xl font-bold text-slate-900 mb-6">Decisions Under Uncertainty</h2>
+            <p class="text-lg text-slate-600 leading-relaxed max-w-3xl mx-auto">
+              In a world of signal and noise, scaling security requires more than just technology—it requires strategic leadership. The CISO Roundtable 2026 brings together top minds to discuss human-centric cyber resilience, AI agentic meshes, and tactical decision-making in the face of the unknown.
+            </p>
+        </div>
+      </section>
+
+      <!-- Content Split Section (White Phase) -->
+      <section class="py-20 bg-ssg-light relative z-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+          <div class="grid lg:grid-cols-12 gap-16 lg:gap-12">
+            
+            <!-- Left Column: Agenda -->
+            <div class="lg:col-span-5 animate-fade-in-up delay-100">
+              <div class="sticky top-28 bg-white p-8 rounded-3xl border border-slate-200 shadow-sm">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="h-10 w-10 rounded-full bg-ssg-red/10 flex items-center justify-center text-ssg-red">
+                        <i class="ph ph-list-bullets text-xl"></i>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900">Program Agenda</h2>
+                </div>
+                
+                <div class="space-y-0 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                  <div class="agenda-item">
+                    <span class="agenda-time">8:30 AM – 9:00 AM</span>
+                    <h3 class="agenda-title">Arrival & Executive Networking</h3>
+                    <p class="agenda-desc">Registration, morning refreshments, and initial peer greetings.</p>
+                  </div>
+                  
+                  <div class="agenda-item">
+                    <span class="agenda-time">9:00 AM – 9:10 AM</span>
+                    <h3 class="agenda-title">Opening Perspective: Cybersecurity Leadership in an Age of Uncertainty</h3>
+                    <p class="agenda-desc">Setting the stage for the day's strategic discussions.</p>
+                  </div>
+
+                  <div class="agenda-item">
+                    <span class="agenda-time">9:10 AM – 10:30 AM</span>
+                    <h3 class="agenda-title">AI Agentic Mesh: Scaling Security in a World of Signal and Noise</h3>
+                    <p class="agenda-desc">A deep dive into leveraging AI to combat alert fatigue and enhance threat detection efficacy.</p>
+                  </div>
+
+                  <div class="agenda-item">
+                    <span class="agenda-time">10:30 AM – 10:50 AM</span>
+                    <h3 class="agenda-title">Strategic Pause & Peer Exchange</h3>
+                    <p class="agenda-desc">Morning break and networking session.</p>
+                  </div>
+
+                  <div class="agenda-item">
+                    <span class="agenda-time">10:50 AM – 12:20 PM</span>
+                    <h3 class="agenda-title">Human-Centric Cyber Resilience: Leading Through the Unknown</h3>
+                    <p class="agenda-desc">Focusing on the human element, building resilient teams, and managing the psychological impact of breaches.</p>
+                  </div>
+
+                  <div class="agenda-item">
+                    <span class="agenda-time">12:20 PM – 1:00 PM</span>
+                    <h3 class="agenda-title">CISO Fireside Dialogue: Decisions Under Uncertainty</h3>
+                    <p class="agenda-desc">Interactive panel discussion featuring veteran CISOs sharing real-world crisis management experiences.</p>
+                  </div>
+
+                  <div class="agenda-item">
+                    <span class="agenda-time">1:00 PM Onwards</span>
+                    <h3 class="agenda-title">Leadership Networking Lunch</h3>
+                    <p class="agenda-desc">Exclusive luncheon and continued closed-door discussions.</p>
+                  </div>
+                </div>
+                
+                <!-- Presenter / Partner Info -->
+                <div class="mt-12 bg-slate-50 border border-slate-200 rounded-2xl p-6 flex items-center justify-between">
+                  <div>
+                    <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide">Hosted By</h4>
+                    <img src="ref/ssquad/images/logon.png" alt="SSquad Global" class="h-6 w-auto mt-2" />
+                  </div>
+                  <div class="h-10 w-px bg-slate-200"></div>
+                  <div>
+                    <h4 class="font-bold text-slate-900 text-sm uppercase tracking-wide">Technology Partner</h4>
+                    <img src="ref/securonix.jpeg" alt="Securonix" class="h-6 w-auto mt-2 object-contain filter grayscale" />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Column: Form -->
+            <div id="rsvp" class="lg:col-span-6 animate-fade-in-up delay-200">
+              <div class="event-card">
+                <div class="mb-8 border-b border-slate-100 pb-6">
+                  <h2 class="text-3xl font-bold text-slate-900">Event Registration</h2>
+                  <p class="text-slate-500 mt-2 text-lg italic tracking-wide">By invitation only</p>
+                </div>
+
+                <div id="form-message" class="hidden mb-6 rounded-xl p-4 text-sm font-medium"></div>
+
+                <form id="rsvp-form" action="submit.php" method="POST" class="space-y-6">
+                  <!-- RSVP Status -->
+                  <div class="form-group space-y-3">
+                    <label class="form-label">RSVP <span class="text-ssg-red">*</span></label>
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-4">
+                      <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="radio" name="rsvp_status" value="Attending" required class="form-radio-custom" />
+                        <span class="text-slate-700 font-medium group-hover:text-slate-900 transition-colors">I will be attending the event</span>
+                      </label>
+                      <label class="flex items-center gap-3 cursor-pointer group">
+                        <input type="radio" name="rsvp_status" value="Not Attending" required class="form-radio-custom" />
+                        <span class="text-slate-700 font-medium group-hover:text-slate-900 transition-colors">I will NOT be attending the event</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- First Name -->
+                    <div class="form-group">
+                      <label for="first_name" class="form-label">First Name <span class="text-ssg-red">*</span></label>
+                      <input type="text" id="first_name" name="first_name" required placeholder="John" class="form-input" />
+                    </div>
+                    <!-- Last Name -->
+                    <div class="form-group">
+                      <label for="last_name" class="form-label">Last Name <span class="text-ssg-red">*</span></label>
+                      <input type="text" id="last_name" name="last_name" required placeholder="Doe" class="form-input" />
+                    </div>
+                  </div>
+
+                  <!-- Company Name -->
+                  <div class="form-group">
+                    <label for="company_name" class="form-label">Company Name <span class="text-ssg-red">*</span></label>
+                    <input type="text" id="company_name" name="company_name" required placeholder="Your Organization Ltd." class="form-input" />
+                  </div>
+
+                  <!-- Designation -->
+                  <div class="form-group">
+                    <label for="designation" class="form-label">Designation <span class="text-ssg-red">*</span></label>
+                    <input type="text" id="designation" name="designation" required placeholder="Chief Information Security Officer" class="form-input" />
+                  </div>
+
+                  <!-- Industry -->
+                  <div class="form-group">
+                    <label for="industry" class="form-label">Industry <span class="text-ssg-red">*</span></label>
+                    <select id="industry" name="industry" required class="form-input appearance-none bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%2394a3b8%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E')] bg-[length:12px_12px] bg-[right_16px_center] bg-no-repeat pr-10 hover:bg-slate-50">
+                      <option value="" disabled selected>Select your industry</option>
+                      <option value="Accounting">Accounting / Finance</option>
+                      <option value="Banking">Banking</option>
+                      <option value="Technology">Information Technology</option>
+                      <option value="Healthcare">Healthcare</option>
+                      <option value="Manufacturing">Manufacturing</option>
+                      <option value="Retail">Retail</option>
+                      <option value="Government">Government / Public Sector</option>
+                      <option value="Other">Other</option>
+                    </select>
+                  </div>
+
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Email -->
+                    <div class="form-group">
+                      <label for="email" class="form-label">Corporate Email <span class="text-ssg-red">*</span></label>
+                      <input type="email" id="email" name="email" required placeholder="john.doe@company.com" class="form-input" />
+                    </div>
+                    <!-- Phone Number -->
+                    <div class="form-group">
+                      <label for="phone" class="form-label">Phone Number <span class="text-ssg-red">*</span></label>
+                      <input type="tel" id="phone" name="phone" required placeholder="+60 12-345 6789" class="form-input" />
+                    </div>
+                  </div>
+
+                  <div class="pt-4 border-t border-slate-100 mt-2">
+                    <button type="submit" id="submit-btn" class="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-slate-900 px-6 py-4 text-base font-bold text-white transition-all duration-300 hover:bg-ssg-red hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-ssg-red focus:ring-offset-2">
+                      Submit Registration <i class="ph ph-paper-plane-tilt"></i>
+                    </button>
+                    <p class="text-center text-xs text-slate-500 mt-4">
+                      By submitting this form, you acknowledge that your information will be processed in accordance with our Privacy Policy.
+                    </p>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="bg-ssg-dark py-12 border-t border-white/10 mt-auto">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 text-center text-slate-400 text-sm">
+        <div class="flex justify-center mb-6 opacity-80">
+          <img src="ref/ssquad/images/logon.png" alt="SSquad Global" class="h-6 w-auto" />
+        </div>
+        <p>© 2026 SSquad Global. All rights reserved.</p>
+        <p class="mt-2 text-xs text-slate-500">Intelligence Led Proactive CyberDefence</p>
+      </div>
+    </footer>
+
+    <script>
+      // Simple AJAX form submission handling
+      document.getElementById('rsvp-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        const form = this;
+        const btn = document.getElementById('submit-btn');
+        const messageBox = document.getElementById('form-message');
+        
+        // UI - Loading state
+        btn.disabled = true;
+        btn.innerHTML = 'Processing... <i class="ph ph-spinner animate-spin"></i>';
+        messageBox.classList.add('hidden');
+        
+        const formData = new FormData(form);
+        
+        try {
+          const response = await fetch(form.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+              'Accept': 'application/json'
+            }
+          });
+          
+          if (response.ok) {
+            // Success
+            messageBox.innerHTML = '<i class="ph ph-check-circle mr-2 text-lg"></i> Thank you! Your registration has been submitted successfully.';
+            messageBox.className = 'mb-6 rounded-xl p-4 text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center';
+            form.reset();
+          } else {
+            // Error
+            messageBox.innerHTML = '<i class="ph ph-warning-circle mr-2 text-lg"></i> An error occurred while processing your request. Please try again.';
+            messageBox.className = 'mb-6 rounded-xl p-4 text-sm font-medium bg-red-50 text-red-800 border border-red-200 flex items-center';
+          }
+        } catch (error) {
+          // Network Error
+          messageBox.innerHTML = '<i class="ph ph-warning-circle mr-2 text-lg"></i> Network error. Please check your connection and try again.';
+          messageBox.className = 'mb-6 rounded-xl p-4 text-sm font-medium bg-red-50 text-red-800 border border-red-200 flex items-center';
+        } finally {
+          // Reset UI
+          btn.disabled = false;
+          btn.innerHTML = 'Submit Registration <i class="ph ph-paper-plane-tilt"></i>';
+          form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    </script>
+  </body>
+</html>

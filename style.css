@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply text-slate-800 bg-ssg-light font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading tracking-tight;
+  }
+}
+
+@layer components {
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ssg-red px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-red-700 hover:shadow-darkGlow focus:outline-none focus:ring-2 focus:ring-ssg-red focus:ring-offset-2;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 backdrop-blur-md px-6 py-3 text-sm font-semibold text-white transition-all duration-300 hover:bg-white/10 hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/50 focus:ring-offset-2;
+  }
+  
+  /* Form Elements */
+  .form-group {
+    @apply mb-5;
+  }
+  .form-label {
+    @apply block text-sm font-semibold text-slate-700 mb-1.5;
+  }
+  .form-input {
+    @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm text-slate-800 transition-colors focus:border-ssg-cyber focus:outline-none focus:ring-1 focus:ring-ssg-cyber placeholder-slate-400 shadow-sm;
+  }
+  .form-radio-custom {
+    @apply h-4 w-4 text-ssg-cyber border-slate-300 focus:ring-ssg-cyber transition-all;
+  }
+
+  /* Cards */
+  .event-card {
+    @apply rounded-3xl border border-slate-200 bg-white p-6 shadow-premium transition-all hover:-translate-y-1 hover:shadow-xl sm:p-8;
+  }
+  .dark-card {
+    @apply rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur-xl shadow-premium sm:p-8;
+  }
+
+  /* Agenda Items */
+  .agenda-item {
+    @apply relative border-l-2 border-ssg-red pl-6 pb-8 last:pb-0;
+  }
+  .agenda-item::before {
+    content: '';
+    @apply absolute left-[-9px] top-0 h-4 w-4 rounded-full border-4 border-white bg-ssg-red;
+  }
+  .agenda-time {
+    @apply text-sm font-bold text-ssg-cyber mb-1 block tracking-wide;
+  }
+  .agenda-title {
+    @apply text-lg font-bold text-slate-900;
+  }
+  .agenda-desc {
+    @apply text-slate-600 mt-2 text-sm leading-relaxed;
+  }
+}
+
+/* Custom Background / Effects */
+.hero-bg {
+  position: relative;
+  background-color: #0B0F19;
+  overflow: hidden;
+}
+.hero-glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(91,46,255,0.15) 0%, rgba(11,15,25,0) 70%);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+.hero-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 0%, rgba(11,15,25,1) 100%);
+  pointer-events: none;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
