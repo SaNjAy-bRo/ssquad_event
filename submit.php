@@ -3,11 +3,22 @@
 header('Content-Type: application/json');
 
 // 1. configuration
-// Replace this with your actual Google Apps Script Web App URL
-$google_script_web_app_url = 'https://script.google.com/macros/s/AKfycby_PLACEHOLDER_REPLACE_ME/exec';
+if (file_exists(__DIR__ . '/config.php')) {
+    require_once __DIR__ . '/config.php';
+} else {
+    // Fallback default config if file is missing
+    $config = [
+        'google_script_web_app_url' => 'https://script.google.com/macros/s/AKfycby_PLACEHOLDER_REPLACE_ME/exec',
+        'forward_to_sheets' => false,
+        'sender_email' => 'sanjayconnecting007@gmail.com',
+        'reply_to_email' => 'sanjayconnecting007@gmail.com'
+    ];
+}
 
-// Set to true if you want to forward data to google sheets
-$forward_to_sheets = false; // By default false until URL is configured
+$google_script_web_app_url = $config['google_script_web_app_url'];
+$forward_to_sheets = $config['forward_to_sheets'];
+$sender_email = $config['sender_email'];
+$reply_to_email = $config['reply_to_email'];
 
 // Only process POST requests
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -53,8 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($rsvp_status === 'Attending') {
         $to = $email;
         $subject = "CISO Roundtable 2026 - Registration Confirmation";
-        $headers = "From: sanjayconnecting007@gmail.com\r\n"; // Replace with your actual sender email
-        $headers .= "Reply-To: sanjayconnecting007@gmail.com\r\n";
+        $headers = "From: {$sender_email}\r\n"; // Replace with your actual sender email
+        $headers .= "Reply-To: {$reply_to_email}\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
@@ -75,8 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Optional: Email template for non-attendees
         $to = $email;
         $subject = "CISO Roundtable 2026 - RSVP Received";
-        $headers = "From: events@ssquad.com\r\n";
-        $headers .= "Reply-To: events@ssquad.com\r\n";
+        $headers = "From: {$sender_email}\r\n";
+        $headers .= "Reply-To: {$reply_to_email}\r\n";
 
         $message = "Dear {$first_name},\n\n";
         $message .= "Thank you for letting us know that you will not be able to attend the CISO Roundtable 2026.\n\n";
