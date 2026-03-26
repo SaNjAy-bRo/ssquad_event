@@ -53,8 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($rsvp_status === 'Attending') {
         $to = $email;
         $subject = "CISO Roundtable 2026 - Registration Confirmation";
-        $headers = "From: events@ssquad.com\r\n"; // Replace with your actual sender email
-        $headers .= "Reply-To: events@ssquad.com\r\n";
+        $headers = "From: sanjayconnecting007@gmail.com\r\n"; // Replace with your actual sender email
+        $headers .= "Reply-To: sanjayconnecting007@gmail.com\r\n";
         $headers .= "MIME-Version: 1.0\r\n";
         $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
 
