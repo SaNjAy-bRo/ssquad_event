@@ -5,10 +5,10 @@
 
 $config = [
     // Replace this with your actual Google Apps Script Web App URL
-    'google_script_web_app_url' => 'https://script.google.com/macros/s/AKfycby_PLACEHOLDER_REPLACE_ME/exec',
+    'google_script_web_app_url' => 'https://script.google.com/macros/s/AKfycbwi7Zhr2xWyG3dfAzeSoaokhqvmfiWCr2ekYSdskyeQrfbUP1bJHAW_cCxWITXs1X9g/exec',
     
     // Set to true if you want to forward data to google sheets
-    'forward_to_sheets' => false,
+    'forward_to_sheets' => true,
 
     // Your actual sender email
     'sender_email' => 'sales@ssquad.com',

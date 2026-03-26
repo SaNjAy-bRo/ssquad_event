@@ -8,7 +8,7 @@ if (file_exists(__DIR__ . '/config.php')) {
 } else {
     // Fallback default config if file is missing
     $config = [
-        'google_script_web_app_url' => 'https://script.google.com/macros/s/AKfycbxVCGQGCNEb_Cafvg5DtxYkjYx9AYFdDHXWsbNmPttktiQFO1nx6D-m0hIuJM8MbpASXg/exec',
+        'google_script_web_app_url' => 'https://script.google.com/macros/s/AKfycbwi7Zhr2xWyG3dfAzeSoaokhqvmfiWCr2ekYSdskyeQrfbUP1bJHAW_cCxWITXs1X9g/exec',
         'forward_to_sheets' => true,
         'sender_email' => 'sales@ssquad.com',
         'reply_to_email' => 'sales@ssquad.com'
