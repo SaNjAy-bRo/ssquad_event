@@ -47,11 +47,15 @@ export default async function handler(req, res) {
       sheetData.append('phone', body.phone || '');
       sheetData.append('date', new Date().toISOString().replace('T', ' ').substring(0, 19));
 
-      fetch(googleAppScriptUrl, {
-        method: 'POST',
-        body: sheetData,
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-      }).catch(err => console.error('Silent Google Sheet failure:', err));
+      try {
+        await fetch(googleAppScriptUrl, {
+          method: 'POST',
+          body: sheetData,
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        });
+      } catch (err) {
+        console.error('Silent Google Sheet failure:', err);
+      }
     }
 
     // ==========================================
