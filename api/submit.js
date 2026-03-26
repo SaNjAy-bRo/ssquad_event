@@ -21,8 +21,13 @@ export default async function handler(req, res) {
     // Vercel parses application/x-www-form-urlencoded automatically into req.body
     const body = req.body;
     
-    // Configuration via Environment Variables (with fallback for easy set up)
-    const googleAppScriptUrl = process.env.GOOGLE_SCRIPT_WEB_APP_URL || 'https://script.google.com/macros/s/AKfycbx4GbJUfZAFAVgiiHUwzQTb3Yr4U0a72TFhpH1_P03yulz3Lw5X1VzVn5xvmw1Y1sxADw/exec';
+    // Configuration via Environment Variables ONLY for security
+    const googleAppScriptUrl = process.env.GOOGLE_SCRIPT_WEB_APP_URL;
+    
+    if (!googleAppScriptUrl) {
+      console.error('SERVER ERROR: GOOGLE_SCRIPT_WEB_APP_URL environment variable is missing.');
+      return res.status(500).json({ status: 'error', message: 'Server configuration error.' });
+    }
     
     // Basic validation
     if (!body.first_name || !body.last_name || !body.email) {
