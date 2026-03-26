@@ -287,8 +287,6 @@
               </a>
             </div>
             <div class="hidden md:flex items-center gap-6 text-white">
-              <span class="text-xs font-bold text-slate-300 uppercase tracking-widest">Technology Partner</span>
-              <img src="ref/securonix.png" alt="Securonix Logo" class="h-6 w-auto object-contain filter brightness-0 invert opacity-90" />
             </div>
             <div class="flex items-center gap-4">
               <a href="#rsvp" class="inline-flex items-center justify-center rounded-lg bg-ssg-red px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-ssg-red/30 hover:bg-white hover:text-ssg-red transition-all duration-300 focus:ring-2 focus:ring-white focus:ring-offset-2">
@@ -320,7 +318,7 @@
               By Invitation Only
             </div>
             <h1 class="text-4xl md:text-5xl lg:text-6xl text-white font-bold leading-tight">
-              CISO Roundtable <span class="text-ssg-cyber drop-shadow-[0_0_15px_rgba(91,46,255,0.4)]">2026</span>
+              CISO Roundtable <span class="text-ssg-red drop-shadow-[0_0_15px_rgba(236,32,36,0.6)]">2026</span>
             </h1>
             <p class="mt-4 text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto font-light">
               Join leading cybersecurity executives for a strategic dialogue on building resilience in an age of uncertainty.
@@ -337,7 +335,7 @@
               </div>
               <div class="flex items-center gap-3 bg-white/5 backdrop-blur-md px-5 py-2.5 rounded-2xl border border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:-translate-y-1 transition-transform cursor-default">
                 <i class="ph ph-map-pin text-xl text-ssg-red"></i>
-                <span class="text-sm">Le Méridien, KL</span>
+                <span class="text-sm">Davidson Hall, Level 6, Le Méridien Kuala Lumpur</span>
               </div>
             </div>
           </div>
@@ -357,38 +355,6 @@
         </div>
       </section>
 
-      <!-- Who Should Attend -->
-      <section class="py-20 bg-slate-50 relative z-20 border-b border-slate-100">
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
-          <div class="text-center mb-10">
-            <h3 class="text-2xl font-bold text-slate-900">Who Should Attend</h3>
-            <p class="text-slate-500 mt-2">This exclusive event is tailored for senior cybersecurity leadership.</p>
-          </div>
-          <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl p-8 border border-slate-200 hover:border-ssg-red/40 transition-colors group shadow-sm">
-              <div class="h-12 w-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-ssg-red mb-6 group-hover:scale-110 transition-transform">
-                <i class="ph ph-shield-check text-2xl"></i>
-              </div>
-              <h4 class="text-xl font-bold text-slate-900 mb-3">Chief Information Security Officers (CISOs)</h4>
-              <p class="text-slate-600 text-sm leading-relaxed">Executive leaders responsible for establishing and maintaining the enterprise vision, strategy, and security programs.</p>
-            </div>
-            <div class="bg-white rounded-2xl p-8 border border-slate-200 hover:border-ssg-cyber/40 transition-colors group shadow-sm">
-              <div class="h-12 w-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-ssg-cyber mb-6 group-hover:scale-110 transition-transform">
-                <i class="ph ph-strategy text-2xl"></i>
-              </div>
-              <h4 class="text-xl font-bold text-slate-900 mb-3">Heads of IT Security & Risk</h4>
-              <p class="text-slate-600 text-sm leading-relaxed">Senior directors tasked with evaluating cyber risks and ensuring compliance across complex technological ecosystems.</p>
-            </div>
-            <div class="bg-white rounded-2xl p-8 border border-slate-200 hover:border-slate-300 transition-colors group shadow-sm">
-              <div class="h-12 w-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-700 mb-6 group-hover:scale-110 transition-transform">
-                <i class="ph ph-buildings text-2xl"></i>
-              </div>
-              <h4 class="text-xl font-bold text-slate-900 mb-3">CTOs & Technology Executives</h4>
-              <p class="text-slate-600 text-sm leading-relaxed">Technology leaders who need to align robust cybersecurity frameworks with overarching business growth objectives.</p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- Content Split Section (White Phase) -->
       <section class="py-20 bg-ssg-light relative z-20">
@@ -405,7 +371,7 @@
                     <h2 class="text-2xl font-bold text-slate-900">Program Agenda</h2>
                 </div>
                 
-                <div class="space-y-0 relative before:absolute before:inset-0 before:ml-2 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 before:to-transparent">
+                <div class="space-y-0 relative">
                   <div class="agenda-item">
                     <span class="agenda-time">8:30 AM – 9:00 AM</span>
                     <h3 class="agenda-title">Arrival & Executive Networking</h3>
@@ -621,21 +587,24 @@
         messageBox.classList.add('hidden');
         
         const formData = new FormData(form);
+        const urlEncodedData = new URLSearchParams(formData);
         
         try {
-          const response = await fetch(form.action, {
+          const isVercel = window.location.hostname.includes('vercel.app') || window.location.hostname === 'localhost' && window.location.port !== '8000';
+          const endpoint = isVercel ? '/api/submit' : 'submit.php';
+          
+          const response = await fetch(endpoint, {
             method: 'POST',
-            body: formData,
+            body: urlEncodedData,
             headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
               'Accept': 'application/json'
             }
           });
           
           if (response.ok) {
             // Success
-            messageBox.innerHTML = '<i class="ph ph-check-circle mr-2 text-lg"></i> Thank you! Your registration has been submitted successfully.';
-            messageBox.className = 'mb-6 rounded-xl p-4 text-sm font-medium bg-emerald-50 text-emerald-800 border border-emerald-200 flex items-center';
-            form.reset();
+            window.location.href = 'thank-you.html';
           } else {
             // Error
             messageBox.innerHTML = '<i class="ph ph-warning-circle mr-2 text-lg"></i> An error occurred while processing your request. Please try again.';

@@ -8,8 +8,8 @@ if (file_exists(__DIR__ . '/config.php')) {
 } else {
     // Fallback default config if file is missing
     $config = [
-        'google_script_web_app_url' => 'https://script.google.com/macros/s/AKfycby_PLACEHOLDER_REPLACE_ME/exec',
-        'forward_to_sheets' => false,
+        'google_script_web_app_url' => 'https://script.google.com/macros/s/AKfycbxVCGQGCNEb_Cafvg5DtxYkjYx9AYFdDHXWsbNmPttktiQFO1nx6D-m0hIuJM8MbpASXg/exec',
+        'forward_to_sheets' => true,
         'sender_email' => 'sales@ssquad.com',
         'reply_to_email' => 'sales@ssquad.com'
     ];
@@ -43,6 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($forward_to_sheets) {
         $ch = curl_init($google_script_web_app_url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true); // REQUIRED for Google Apps Script redirects
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // Fix for local Windows PHP SSL certificate issues
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
             'rsvp_status' => $rsvp_status,
