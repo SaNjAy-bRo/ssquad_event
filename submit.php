@@ -10,8 +10,8 @@ if (file_exists(__DIR__ . '/config.php')) {
     $config = [
         'google_script_web_app_url' => 'https://script.google.com/macros/s/AKfycby_PLACEHOLDER_REPLACE_ME/exec',
         'forward_to_sheets' => false,
-        'sender_email' => 'sanjayconnecting007@gmail.com',
-        'reply_to_email' => 'sanjayconnecting007@gmail.com'
+        'sender_email' => 'sales@ssquad.com',
+        'reply_to_email' => 'sales@ssquad.com'
     ];
 }
 

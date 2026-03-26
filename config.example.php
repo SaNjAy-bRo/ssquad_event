@@ -11,9 +11,9 @@ $config = [
     'forward_to_sheets' => false,
 
     // Your actual sender email
-    'sender_email' => 'sanjayconnecting007@gmail.com',
+    'sender_email' => 'sales@ssquad.com',
     
     // Reply-To email
-    'reply_to_email' => 'sanjayconnecting007@gmail.com'
+    'reply_to_email' => 'sales@ssquad.com'
 ];
 ?>
