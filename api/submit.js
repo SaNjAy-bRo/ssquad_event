@@ -34,37 +34,84 @@ export default async function handler(req, res) {
       return res.status(400).json({ status: 'error', message: 'Invalid input data.' });
     }
 
-    // Prepare data for Google Sheets
-    const sheetData = new URLSearchParams();
-    sheetData.append('rsvp_status', body.rsvp_status || '');
-    sheetData.append('first_name', body.first_name || '');
-    sheetData.append('last_name', body.last_name || '');
-    sheetData.append('company', body.company_name || ''); // Note: frontend sends company_name
-    sheetData.append('designation', body.designation || '');
-    sheetData.append('industry', body.industry || '');
-    sheetData.append('email', body.email || '');
-    sheetData.append('phone', body.phone || '');
-    sheetData.append('date', new Date().toISOString().replace('T', ' ').substring(0, 19));
+    // Optional: Keep forwarding to Google Sheets for database purposes
+    if (googleAppScriptUrl) {
+      const sheetData = new URLSearchParams();
+      sheetData.append('rsvp_status', body.rsvp_status || '');
+      sheetData.append('first_name', body.first_name || '');
+      sheetData.append('last_name', body.last_name || '');
+      sheetData.append('company', body.company_name || '');
+      sheetData.append('designation', body.designation || '');
+      sheetData.append('industry', body.industry || '');
+      sheetData.append('email', body.email || '');
+      sheetData.append('phone', body.phone || '');
+      sheetData.append('date', new Date().toISOString().replace('T', ' ').substring(0, 19));
 
-    // Forward to Google Sheets Web App
-    const sheetResponse = await fetch(googleAppScriptUrl, {
-      method: 'POST',
-      body: sheetData,
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    });
-
-    if (!sheetResponse.ok) {
-      console.error('Failed to forward to Google Sheets:', await sheetResponse.text());
+      fetch(googleAppScriptUrl, {
+        method: 'POST',
+        body: sheetData,
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+      }).catch(err => console.error('Silent Google Sheet failure:', err));
     }
 
-    // Optional: Email Notification 
-    // Vercel does not support PHP's native mail(). You must integrate an API like Resend, SendGrid, or Nodemailer here.
-    // Example:
-    // if (process.env.RESEND_API_KEY) { 
-    //   await resend.emails.send({ ... })
-    // }
+    // ==========================================
+    // Send Emails DIRECTLY from the Vercel API
+    // ==========================================
+    const nodemailer = require('nodemailer');
+    
+    if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+      const transporter = nodemailer.createTransport({
+        service: 'gmail', // or 'smtp.office365.com', etc. Ensure service matches your new email provider.
+        auth: {
+          user: process.env.SMTP_USER,
+          pass: process.env.SMTP_PASS
+        }
+      });
+
+      // Email 1: Confirmation to the Registrant
+      if (body.rsvp_status === 'Attending') {
+        const userMessage = `Dear ${body.first_name},\n\n` +
+          `Thank you for confirming your attendance at the CISO Roundtable 2026. We are delighted to have you join us for this exclusive session.\n\n` +
+          `Event Details:\n` +
+          `Date: 21 May 2026\n` +
+          `Time: 9:00 AM – 2:00 PM\n` +
+          `Venue: Davidson Hall, Level 6, Le Méridien Kuala Lumpur\n\n` +
+          `We look forward to welcoming you at the event.\n\n` +
+          `Best regards,\n` +
+          `SSquad Global Events Team`;
+
+        await transporter.sendMail({
+          from: `"SSquad Global Events Team" <${process.env.SMTP_USER}>`,
+          to: body.email,
+          subject: 'Registration Confirmed - CISO Roundtable 2026',
+          text: userMessage
+        });
+      }
+
+      // Email 2: Alert Notification to the Company
+      const alertEmail = process.env.COMPANY_ALERT_EMAIL || 'sales@ssquad.com';
+      const companyMessage = `A new ${body.rsvp_status} RSVP has been received for the CISO Roundtable 2026.\n\n` +
+        `Details:\n` +
+        `---------------------------------\n` +
+        `Name: ${body.first_name} ${body.last_name}\n` +
+        `Company: ${body.company_name}\n` +
+        `Designation: ${body.designation}\n` +
+        `Industry: ${body.industry}\n` +
+        `Email: ${body.email}\n` +
+        `Phone: ${body.phone}\n` +
+        `Status: ${body.rsvp_status}\n` +
+        `---------------------------------`;
+
+      await transporter.sendMail({
+        from: `"CISO System Alert" <${process.env.SMTP_USER}>`,
+        to: alertEmail,
+        subject: `New RSVP Alert: ${body.first_name} ${body.last_name} (${body.rsvp_status})`,
+        text: companyMessage
+      });
+      
+    } else {
+      console.warn('SMTP_USER and SMTP_PASS environment variables are missing. Emails were not sent.');
+    }
 
     return res.status(200).json({ status: 'success', message: 'Registration successfully processed.' });
   } catch (error) {

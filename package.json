@@ -1,0 +1,9 @@
+{
+  "name": "ciso-roundtable-2026",
+  "version": "1.0.0",
+  "description": "Event Landing Page",
+  "main": "index.html",
+  "dependencies": {
+    "nodemailer": "^6.9.13"
+  }
+}
