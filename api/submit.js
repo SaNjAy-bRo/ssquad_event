@@ -82,10 +82,10 @@ export default async function handler(req, res) {
           `Venue: Le Méridien Kuala Lumpur\n\n` +
           `We look forward to welcoming you at the event.\n\n` +
           `Best regards,\n` +
-          `Ssquad Global Events Team`;
+          `Ssquad. Global Events Team`;
 
         await transporter.sendMail({
-          from: `"Ssquad Global Events Team" <${process.env.SMTP_USER}>`,
+          from: `"Ssquad. Global Events Team" <${process.env.SMTP_USER}>`,
           to: body.email,
           subject: 'Registration Confirmed - CISO Roundtable 2026',
           text: userMessage
