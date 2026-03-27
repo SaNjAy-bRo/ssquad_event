@@ -587,10 +587,18 @@
         const urlEncodedData = new URLSearchParams(formData);
         
         try {
-          const isVercel = window.location.hostname.includes('vercel.app') || window.location.hostname === 'localhost' && window.location.port !== '8000';
-          const endpoint = isVercel ? '/api/submit' : 'submit.php';
+          // ==========================================
+          // CONFIGURATION: SET YOUR VERCEL API URL HERE
+          // ==========================================
+          const VERCEL_API_URL = ''; // e.g., 'https://your-project.vercel.app/api/submit'
           
-          const response = await fetch(endpoint, {
+          const isVercel = window.location.hostname.includes('vercel.app');
+          const endpoint = (isVercel || !VERCEL_API_URL) ? '/api/submit' : VERCEL_API_URL;
+          
+          // If not on Vercel and no Vercel URL is set, fallback to submit.php
+          const finalEndpoint = (!isVercel && !VERCEL_API_URL) ? 'submit.php' : endpoint;
+          
+          const response = await fetch(finalEndpoint, {
             method: 'POST',
             body: urlEncodedData,
             headers: {
