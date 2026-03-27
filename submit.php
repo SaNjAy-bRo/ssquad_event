@@ -3,6 +3,15 @@
 header('Content-Type: application/json');
 
 // 1. configuration
+// Load WordPress environment if available
+$wp_load_path = __DIR__ . '/wp-load.php';
+$is_wordpress = false;
+
+if (file_exists($wp_load_path)) {
+    require_once $wp_load_path;
+    $is_wordpress = true;
+}
+
 if (file_exists(__DIR__ . '/config.php')) {
     require_once __DIR__ . '/config.php';
 } else {
@@ -83,7 +92,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message .= "Ssquad Global Events Team";
 
         // Send email
-        @mail($to, $subject, $message, $headers);
+        if ($is_wordpress && function_exists('wp_mail')) {
+            $wp_headers = array('Content-Type: text/plain; charset=UTF-8', "Reply-To: {$reply_to_email}");
+            wp_mail($to, $subject, $message, $wp_headers);
+        } else {
+            @mail($to, $subject, $message, $headers);
+        }
     } else {
         // Optional: Email template for non-attendees
         $to = $email;
@@ -97,7 +111,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message .= "Best regards,\n";
         $message .= "Ssquad Global Events Team";
 
-        @mail($to, $subject, $message, $headers);
+        // Send email
+        if ($is_wordpress && function_exists('wp_mail')) {
+            $wp_headers = array('Content-Type: text/plain; charset=UTF-8', "Reply-To: {$reply_to_email}");
+            wp_mail($to, $subject, $message, $wp_headers);
+        } else {
+            @mail($to, $subject, $message, $headers);
+        }
     }
 
     // 4. Return Success Response

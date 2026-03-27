@@ -629,7 +629,7 @@
         // CONFIGURATION: SET YOUR VERCEL API URL HERE
         // ==========================================
         const VERCEL_API_URL = 'https://ssquadevent.vercel.app/api/submit'; // Updated path
-        
+
         const isVercel = window.location.hostname.includes('vercel.app');
         const endpoint = (isVercel || !VERCEL_API_URL) ? '/api/submit' : VERCEL_API_URL;
 
