@@ -28,6 +28,7 @@ $google_script_web_app_url = $config['google_script_web_app_url'];
 $forward_to_sheets = $config['forward_to_sheets'];
 $sender_email = $config['sender_email'];
 $reply_to_email = $config['reply_to_email'];
+$notification_email = $config['notification_email'] ?? $sender_email;
 
 // Only process POST requests
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -120,7 +121,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // 4. Return Success Response
+    // 4. Send Internal Alert Notification to Client
+    $admin_subject = "New RSVP: {$first_name} {$last_name} ({$rsvp_status})";
+    $admin_message = "New registration for CISO Roundtable 2026:\n\n";
+    $admin_message .= "RSVP: {$rsvp_status}\n";
+    $admin_message .= "Name: {$first_name} {$last_name}\n";
+    $admin_message .= "Company: {$company}\n";
+    $admin_message .= "Designation: {$designation}\n";
+    $admin_message .= "Industry: {$industry}\n";
+    $admin_message .= "Email: {$email}\n";
+    $admin_message .= "Phone: {$phone}\n\n";
+    $admin_message .= "Data has also been added to the Google Sheet.";
+
+    if ($is_wordpress && function_exists('wp_mail')) {
+        $wp_headers = array('Content-Type: text/plain; charset=UTF-8');
+        @wp_mail($notification_email, $admin_subject, $admin_message, $wp_headers);
+    } else {
+        $admin_headers = "From: {$sender_email}\r\n";
+        $admin_headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+        @mail($notification_email, $admin_subject, $admin_message, $admin_headers);
+    }
+
+    // 5. Return Success Response
     http_response_code(200);
     echo json_encode(['status' => 'success', 'message' => 'Registration successfully processed.']);
 

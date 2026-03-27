@@ -106,10 +106,11 @@ export default async function handler(req, res) {
         `Status: ${body.rsvp_status}\n` +
         `---------------------------------`;
 
+     // Internal Alert to Ssquad
       await transporter.sendMail({
-        from: `"CISO System Alert" <${process.env.SMTP_USER}>`,
-        to: alertEmail,
-        subject: `New RSVP Alert: ${body.first_name} ${body.last_name} (${body.rsvp_status})`,
+        from: `"Ssquad 2026" <${process.env.SMTP_USER}>`,
+        to: process.env.COMPANY_ALERT_EMAIL || "sales@ssquad.com, hady@ssquad.com",
+        subject: `New RSVP: ${body.first_name} ${body.last_name} (${body.rsvp_status})`,
         text: companyMessage
       });
       
