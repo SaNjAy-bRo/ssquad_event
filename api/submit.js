@@ -79,7 +79,7 @@ export default async function handler(req, res) {
           `Event Details:\n` +
           `Date: 21 May 2026\n` +
           `Time: 9:00 AM – 2:00 PM\n` +
-          `Venue: Davidson Hall, Level 6, Le Méridien Kuala Lumpur\n\n` +
+          `Venue: Le Méridien Kuala Lumpur\n\n` +
           `We look forward to welcoming you at the event.\n\n` +
           `Best regards,\n` +
           `SSquad Global Events Team`;

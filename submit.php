@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message .= "Event Details:\n";
         $message .= "Date: 21 May 2026\n";
         $message .= "Time: 9:00 AM – 2:00 PM\n";
-        $message .= "Venue: Davidson Hall, Level 6, Le Méridien Kuala Lumpur\n\n";
+        $message .= "Venue: Le Méridien Kuala Lumpur\n\n";
         $message .= "We look forward to welcoming you at the event.\n\n";
         $message .= "Best regards,\n";
         $message .= "SSquad Global Events Team";
