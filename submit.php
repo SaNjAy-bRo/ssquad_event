@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message .= "Venue: Le Méridien Kuala Lumpur\n\n";
         $message .= "We look forward to welcoming you at the event.\n\n";
         $message .= "Best regards,\n";
-        $message .= "Ssquad. Global Events Team";
+        $message .= "Ssquad Global Events Team";
 
         // Send email
         @mail($to, $subject, $message, $headers);
@@ -95,7 +95,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message .= "Thank you for letting us know that you will not be able to attend the CISO Roundtable 2026.\n\n";
         $message .= "We hope to see you at future events.\n\n";
         $message .= "Best regards,\n";
-        $message .= "Ssquad. Global Events Team";
+        $message .= "Ssquad Global Events Team";
 
         @mail($to, $subject, $message, $headers);
     }
